@@ -152,3 +152,5 @@ shape = SubResource("CapsuleShape2D_xxgcw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fpo3a")
 animation = &"move_up"
+frame = 2
+frame_progress = 0.739204
