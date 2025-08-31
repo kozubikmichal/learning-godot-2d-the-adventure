@@ -15,6 +15,10 @@ run/main_scene="uid://dq7o7tbpq4ffr"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SceneManager="*res://scene_manager/scene_manager.tscn"
+
 [file_customization]
 
 folder_colors={

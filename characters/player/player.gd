@@ -4,9 +4,9 @@ extends CharacterBody2D
 @export var move_speed: float = 50.0
 
 func _ready() -> void:
-	pass
+	position = SceneManager.player_spawn_position
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = input_vector * move_speed
 

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ben4y7tinrqbh"]
+
+[ext_resource type="PackedScene" uid="uid://0jasfwgb3au2" path="res://characters/player/player.tscn" id="1_i4cnr"]
+[ext_resource type="PackedScene" uid="uid://brgnxd7lx1w5m" path="res://scene_entrance/scene_entrance.tscn" id="2_4t1v2"]
+
+[node name="DungeonScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_i4cnr")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
+
+[node name="SceneEntrance" parent="." instance=ExtResource("2_4t1v2")]
+position = Vector2(0, 37)
+scene_path = "res://game_scene/game_scene.tscn"
+player_spawn_position = Vector2(153, -75)
