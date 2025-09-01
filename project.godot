@@ -19,11 +19,20 @@ config/icon="res://icon.svg"
 
 SceneManager="*res://scene_manager/scene_manager.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [file_customization]
 
 folder_colors={
 "res://assets/Ninja Adventure - Asset Pack/": "green"
 }
+
+[global_group]
+
+wall=""
+pushable=""
 
 [input]
 

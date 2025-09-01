@@ -8,5 +8,5 @@ func _on_body_entered(body: Node2D) -> void:
 		SceneManager.player_spawn_position = player_spawn_position
 		get_tree().change_scene_to_file.call_deferred(scene_path)
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	pass
