@@ -4,9 +4,11 @@ extends CharacterBody2D
 @export var move_speed: float = 50.0
 @export var push_force: float = 100.0
 
-func _ready() -> void:
-	if (SceneManager.player_spawn_position != Vector2.ZERO):
-		position = SceneManager.player_spawn_position
+func _enter_tree() -> void:
+	if (is_instance_valid(Global.scene_manager)):
+		position = Global.scene_manager.player_spawn_position
+	else:
+		position = Vector2.ZERO
 
 func _physics_process(_delta: float) -> void:
 	compute_velocity()

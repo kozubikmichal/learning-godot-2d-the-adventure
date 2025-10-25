@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="The Adventure"
-run/main_scene="uid://dq7o7tbpq4ffr"
+run/main_scene="uid://dcylwht0srdrg"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-SceneManager="*res://scene_manager/scene_manager.tscn"
+Global="*res://scripts/global.gd"
 
 [display]
 
