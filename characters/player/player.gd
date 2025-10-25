@@ -5,7 +5,8 @@ extends CharacterBody2D
 @export var push_force: float = 100.0
 
 func _ready() -> void:
-	position = SceneManager.player_spawn_position
+	if (SceneManager.player_spawn_position != Vector2.ZERO):
+		position = SceneManager.player_spawn_position
 
 func _physics_process(_delta: float) -> void:
 	compute_velocity()

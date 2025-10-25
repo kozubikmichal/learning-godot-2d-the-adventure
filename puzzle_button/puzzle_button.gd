@@ -4,6 +4,8 @@ extends Area2D
 signal pressed
 signal unpressed
 
+@export var is_single_use: bool = false
+
 var body_count: int = 0
 
 func _ready() -> void:
@@ -18,6 +20,9 @@ func _on_body_entered(body: Node) -> void:
 			$Sprite.play("pressed")
 
 func _on_body_exited(_body: Node) -> void:
+	if is_single_use:
+		return
+
 	body_count -= 1
 
 	if body_count == 0:

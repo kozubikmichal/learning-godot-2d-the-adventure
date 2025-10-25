@@ -814,6 +814,6 @@ zoom = Vector2(4, 4)
 position = Vector2(191, -129)
 scene_path = "res://dungeon_scene/dungeon_scene.tscn"
 
-[node name="LockedDoor" parent="." node_paths=PackedStringArray("activation_button") instance=ExtResource("5_8l73x")]
+[node name="LockedDoor" parent="." node_paths=PackedStringArray("activation_buttons") instance=ExtResource("5_8l73x")]
 position = Vector2(191, -127)
-activation_button = NodePath("../PuzzleButton")
+activation_buttons = [NodePath("../PuzzleButton")]
