@@ -40,10 +40,10 @@ func change_gui_scene(new_scene: String, delete: bool = true, keep_running: bool
 		elif keep_running:
 			current_gui_scene.visible = false
 		else:
-			gui.remove_child(current_gui_scene)
+			gui.call_deferred("remove_child", current_gui_scene)
 
 	var new = get_cached_scene(new_scene) as Control
-	gui.add_child(new)
+	gui.call_deferred("add_child", new)
 	current_gui_scene = new
 	current_gui_scene_path = new_scene
 
@@ -55,9 +55,9 @@ func change_2d_scene(new_scene: String, delete: bool = true, keep_running: bool 
 		elif keep_running:
 			current_2d_scene.visible = false
 		else:
-			world_2d.remove_child(current_2d_scene)
+			world_2d.call_deferred("remove_child", current_2d_scene)
 
 	var new = get_cached_scene(new_scene) as Node2D
-	world_2d.add_child(new)
+	world_2d.call_deferred("add_child", new)
 	current_2d_scene = new
 	current_2d_scene_path = new_scene
