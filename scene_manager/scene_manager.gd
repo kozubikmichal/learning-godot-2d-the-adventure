@@ -1,8 +1,4 @@
 extends Node
-class_name SceneManager
-
-@export var world_2d: Node2D
-@export var gui: Control
 
 var player_spawn_position: Vector2
 
@@ -14,11 +10,25 @@ var current_gui_scene_path: String
 
 var scene_cache: Dictionary = {}
 
-func _enter_tree() -> void:
-	Global.scene_manager = self
+@onready var world_2d: Node2D = $World2D
+@onready var gui: Control = $GUI
 
 func _ready() -> void:
-	change_2d_scene("res://game_scene/game_scene.tscn", false, false)
+	var current_scene = get_tree().current_scene
+
+	if (current_scene):
+		get_tree().root.call_deferred("remove_child", current_scene)
+
+		if (current_scene is Node2D):
+			world_2d.call_deferred("add_child", current_scene)
+			get_tree().root.set_deferred("current_scene", current_scene)
+			current_2d_scene = current_scene
+			current_2d_scene_path = current_scene.scene_file_path
+		elif (current_scene is Control):
+			gui.call_deferred("add_child", current_scene)
+			get_tree().root.set_deferred("current_scene", current_scene)
+			current_gui_scene = current_scene
+			current_gui_scene_path = current_scene.scene_file_path
 
 func get_cached_scene(scene_path: String) -> Node:
 	if scene_cache.has(scene_path):

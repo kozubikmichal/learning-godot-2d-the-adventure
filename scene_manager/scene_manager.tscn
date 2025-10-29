@@ -2,10 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b3isg7rddx6a6" path="res://scene_manager/scene_manager.gd" id="1_6w36t"]
 
-[node name="SceneManager" type="Node" node_paths=PackedStringArray("world_2d", "gui")]
+[node name="SceneManager" type="Node"]
 script = ExtResource("1_6w36t")
-world_2d = NodePath("World2D")
-gui = NodePath("GUI")
 
 [node name="World2D" type="Node2D" parent="."]
 

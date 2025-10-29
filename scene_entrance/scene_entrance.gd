@@ -17,8 +17,8 @@ func _exit_tree() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player and enabled:
 		print("Changing scene to: ", scene_path, player_spawn_position)
-		Global.scene_manager.player_spawn_position = player_spawn_position
-		Global.scene_manager.change_2d_scene(scene_path, false, false)
+		SceneManager.player_spawn_position = player_spawn_position
+		SceneManager.change_2d_scene(scene_path, false, false)
 
 func _on_body_exited(_body: Node2D) -> void:
 	pass
