@@ -20,6 +20,7 @@ font_color = Color(0, 0, 0, 1)
 font_size = 28
 
 [node name="NPC" type="StaticBody2D" groups=["interactable"]]
+process_mode = 3
 script = ExtResource("1_nhy3c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
