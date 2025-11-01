@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://ben4y7tinrqbh"]
+[gd_scene load_steps=15 format=4 uid="uid://ben4y7tinrqbh"]
 
 [ext_resource type="PackedScene" uid="uid://0jasfwgb3au2" path="res://characters/player/player.tscn" id="1_i4cnr"]
 [ext_resource type="PackedScene" uid="uid://brgnxd7lx1w5m" path="res://scene_entrance/scene_entrance.tscn" id="2_4t1v2"]
@@ -806,6 +806,8 @@ terrain_set_0/terrain_0/name = "Dungeon Walls"
 terrain_set_0/terrain_0/color = Color(0.966667, 0, 1, 1)
 sources/0 = SubResource("TileSetAtlasSource_nh2fr")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnsuq"]
+
 [node name="DungeonScene" type="Node2D"]
 
 [node name="FloorLayer" type="TileMapLayer" parent="."]
@@ -860,3 +862,15 @@ position = Vector2(0, -8)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
+
+[node name="PuzzleWalls" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleWalls"]
+position = Vector2(-117, -35)
+shape = SubResource("RectangleShape2D_nnsuq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PuzzleWalls"]
+position = Vector2(128, -28)
+shape = SubResource("RectangleShape2D_nnsuq")

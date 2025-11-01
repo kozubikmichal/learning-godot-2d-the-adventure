@@ -34,6 +34,8 @@ animations = [{
 size = Vector2(12, 8)
 
 [node name="PuzzleButton" type="Area2D"]
+collision_layer = 4
+collision_mask = 14
 script = ExtResource("1_56wd2")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

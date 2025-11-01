@@ -7,6 +7,10 @@ extends CharacterBody2D
 func _enter_tree() -> void:
 	position = SceneManager.player_spawn_position
 
+func _ready() -> void:
+	$InteractionArea.body_entered.connect(_on_interaction_area_body_entered)
+	$InteractionArea.body_exited.connect(_on_interaction_area_body_exited)
+
 func _physics_process(_delta: float) -> void:
 	compute_velocity()
 	process_collision()
@@ -35,11 +39,23 @@ func process_collision() -> void:
 func animate():
 	if (velocity.x > 0):
 		$AnimatedSprite2D.play("move_right")
+		$InteractionArea.position = Vector2(8, 0)
 	elif (velocity.x < 0):
 		$AnimatedSprite2D.play("move_left")
+		$InteractionArea.position = Vector2(-8, 0)
 	elif (velocity.y < 0):
 		$AnimatedSprite2D.play("move_up")
+		$InteractionArea.position = Vector2(0, -8)
 	elif (velocity.y > 0):
 		$AnimatedSprite2D.play("move_down")
+		$InteractionArea.position = Vector2(0, 8)
 	else:
 		$AnimatedSprite2D.stop()
+
+func _on_interaction_area_body_entered(body: Node) -> void:
+	if body.is_in_group("interactable") && body is NPC:
+		body.enable_interaction()
+
+func _on_interaction_area_body_exited(body: Node) -> void:
+	if body.is_in_group("interactable") && body is NPC:
+		body.disable_interaction()
