@@ -10,6 +10,8 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	$InteractionArea.body_entered.connect(_on_interaction_area_body_entered)
 	$InteractionArea.body_exited.connect(_on_interaction_area_body_exited)
+	$HitBox.body_entered.connect(_on_hit_box_body_entered)
+	$HitBox.body_exited.connect(_on_hit_box_body_exited)
 
 func _physics_process(_delta: float) -> void:
 	compute_velocity()
@@ -19,7 +21,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func update_score_label() -> void:
-	$CanvasLayer/Panel/Label.text = str(SceneManager.opened_chest_count)
+	$CanvasLayer/Panel/Label.text = str(GameManager.opened_chest_count)
 
 func compute_velocity() -> void:
 	var input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -62,3 +64,15 @@ func _on_interaction_area_body_entered(body: Node) -> void:
 func _on_interaction_area_body_exited(body: Node) -> void:
 	if body.is_in_group("interactable"):
 		body.disable_interaction()
+
+func _on_hit_box_body_entered(_body: Node) -> void:
+	GameManager.player_hp -= 1
+	if GameManager.player_hp <= 0:
+		die()
+
+func die() -> void:
+	SceneManager.reload_current_2d_scene()
+	GameManager.reset_player_hp()
+
+func _on_hit_box_body_exited(_body: Node) -> void:
+	pass

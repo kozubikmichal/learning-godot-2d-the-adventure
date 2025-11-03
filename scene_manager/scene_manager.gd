@@ -13,8 +13,6 @@ var scene_cache: Dictionary = {}
 @onready var world_2d: Node2D = $World2D
 @onready var gui: Control = $GUI
 
-var opened_chest_count: int = 0
-
 func _ready() -> void:
 	var current_scene = get_tree().current_scene
 
@@ -23,14 +21,16 @@ func _ready() -> void:
 
 		if (current_scene is Node2D):
 			world_2d.call_deferred("add_child", current_scene)
-			get_tree().root.set_deferred("current_scene", current_scene)
 			current_2d_scene = current_scene
 			current_2d_scene_path = current_scene.scene_file_path
 		elif (current_scene is Control):
 			gui.call_deferred("add_child", current_scene)
-			get_tree().root.set_deferred("current_scene", current_scene)
 			current_gui_scene = current_scene
 			current_gui_scene_path = current_scene.scene_file_path
+
+func reload_current_2d_scene() -> void:
+	remove_cached_scene(current_2d_scene_path)
+	change_2d_scene(current_2d_scene_path)
 
 func get_cached_scene(scene_path: String) -> Node:
 	if scene_cache.has(scene_path):
