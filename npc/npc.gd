@@ -27,6 +27,7 @@ func handle_interaction() -> void:
 		$CanvasLayer.visible = true
 		get_tree().paused = true
 		handle_dialogue()
+		$InteractionSound.play()
 	else:
 		dialogue_active_line = 0
 		$CanvasLayer.visible = false

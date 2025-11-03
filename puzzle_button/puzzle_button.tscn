@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cic855jmutpp8"]
+[gd_scene load_steps=8 format=3 uid="uid://cic855jmutpp8"]
 
 [ext_resource type="Script" uid="uid://cpnt6c1qhap2b" path="res://puzzle_button/puzzle_button.gd" id="1_56wd2"]
 [ext_resource type="Texture2D" uid="uid://cd15ih4evegbt" path="res://assets/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetDungeon.png" id="1_521tb"]
+[ext_resource type="AudioStream" uid="uid://c1tcy1njieufs" path="res://assets/Ninja Adventure - Asset Pack/Sounds/Game/Gold2.wav" id="3_uiqgp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_56wd2"]
 atlas = ExtResource("1_521tb")
@@ -45,3 +46,6 @@ autoplay = "unpressed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_klm3n")
+
+[node name="InteractionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_uiqgp")

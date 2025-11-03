@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://ben4y7tinrqbh"]
+[gd_scene load_steps=21 format=4 uid="uid://ben4y7tinrqbh"]
 
 [ext_resource type="PackedScene" uid="uid://0jasfwgb3au2" path="res://characters/player/player.tscn" id="1_i4cnr"]
 [ext_resource type="Script" uid="uid://b7d5edjkasiom" path="res://dungeon_scene/dungeon_scene.gd" id="1_nl4bl"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c5p1lp0jjhldj" path="res://switch/switch_puzzle_manager.tscn" id="12_72vsc"]
 [ext_resource type="PackedScene" uid="uid://bnadvbl0pccbi" path="res://switch/switch.tscn" id="12_pjhy6"]
 [ext_resource type="PackedScene" uid="uid://dqjicokf8ywud" path="res://treasure_chest/treasure_chest.tscn" id="14_72vsc"]
+[ext_resource type="AudioStream" uid="uid://gj21foyfeedk" path="res://assets/Ninja Adventure - Asset Pack/Musics/2 - The Cave.ogg" id="15_ueaes"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_myxw4"]
 texture = ExtResource("4_nh2fr")
@@ -915,3 +916,9 @@ shape = SubResource("RectangleShape2D_nnsuq")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PuzzleWalls"]
 position = Vector2(128, -28)
 shape = SubResource("RectangleShape2D_nnsuq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_ueaes")
+volume_db = -5.0
+autoplay = true
+parameters/looping = false

@@ -13,6 +13,7 @@ func _process(_delta: float) -> void:
 		handle_interaction()
 
 func handle_interaction() -> void:
+	$InteractionSound.play()
 	if activated:
 		deactivate_switch()
 	else:

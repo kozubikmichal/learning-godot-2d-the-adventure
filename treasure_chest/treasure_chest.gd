@@ -26,6 +26,7 @@ func open_chest() -> void:
 	$Timer.timeout.connect(_on_Timer_timeout)
 	$Timer.start()
 	SceneManager.opened_chest_count += 1
+	$OpenSound.play()
 
 func _on_Timer_timeout() -> void:
 	$RewardSprite.hide()

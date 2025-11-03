@@ -18,6 +18,8 @@ func _on_body_entered(body: Node) -> void:
 		if (body_count == 1):
 			pressed.emit()
 			$Sprite.play("pressed")
+			$InteractionSound.pitch_scale = 1.0
+			$InteractionSound.play()
 
 func _on_body_exited(_body: Node) -> void:
 	if is_single_use:
@@ -28,3 +30,5 @@ func _on_body_exited(_body: Node) -> void:
 	if body_count == 0:
 		unpressed.emit()
 		$Sprite.play("unpressed")
+		$InteractionSound.pitch_scale = 0.8
+		$InteractionSound.play()
