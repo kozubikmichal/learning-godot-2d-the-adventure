@@ -13,6 +13,8 @@ var scene_cache: Dictionary = {}
 @onready var world_2d: Node2D = $World2D
 @onready var gui: Control = $GUI
 
+var opened_chest_count: int = 0
+
 func _ready() -> void:
 	var current_scene = get_tree().current_scene
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dq7o7tbpq4ffr"]
+[gd_scene load_steps=24 format=4 uid="uid://dq7o7tbpq4ffr"]
 
 [ext_resource type="Texture2D" uid="uid://bfd3torplm015" path="res://assets/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloor.png" id="1_m1k14"]
 [ext_resource type="PackedScene" uid="uid://0jasfwgb3au2" path="res://characters/player/player.tscn" id="1_n4lbc"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://u14viplq2k52" path="res://npc/npc.tscn" id="9_mw77h"]
 [ext_resource type="Texture2D" uid="uid://q6gorv2m7jly" path="res://assets/Ninja Adventure - Asset Pack/Actor/Characters/OldMan2/SpriteSheet.png" id="10_adbct"]
 [ext_resource type="Texture2D" uid="uid://c65k18dfio0q4" path="res://assets/Ninja Adventure - Asset Pack/Actor/Characters/OldMan2/Faceset.png" id="11_cvb1i"]
+[ext_resource type="PackedScene" uid="uid://bnadvbl0pccbi" path="res://switch/switch.tscn" id="12_f63yk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3kg8t"]
 texture = ExtResource("1_m1k14")
@@ -870,6 +871,9 @@ text = "Cože??"
 
 [node name="Label" parent="ObstacleLayer/NPC3/CanvasLayer" index="2"]
 text = "Dědek"
+
+[node name="Switch" parent="ObstacleLayer" instance=ExtResource("12_f63yk")]
+position = Vector2(48, -18)
 
 [node name="SceneEntrance" parent="." instance=ExtResource("5_e0oqy")]
 position = Vector2(191, -129)

@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://dqjicokf8ywud"]
+
+[ext_resource type="Texture2D" uid="uid://cjfx747r80ill" path="res://assets/Ninja Adventure - Asset Pack/Items/Treasure/BigTreasureChest.png" id="1_jr5jx"]
+[ext_resource type="Script" uid="uid://c4ncmbgfes07b" path="res://treasure_chest/treasure_chest.gd" id="1_kqg3h"]
+[ext_resource type="Texture2D" uid="uid://b52gvn5mjdpbd" path="res://assets/Ninja Adventure - Asset Pack/Items/Scroll/ScrollEmpty.png" id="3_037fa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqg3h"]
+atlas = ExtResource("1_jr5jx")
+region = Rect2(0, 0, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_037fa"]
+atlas = ExtResource("1_jr5jx")
+region = Rect2(16, 0, 16, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yrxud"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqg3h")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_037fa")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0nj3"]
+size = Vector2(16, 9)
+
+[node name="TreasureChest" type="StaticBody2D" groups=["interactable"]]
+script = ExtResource("1_kqg3h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yrxud")
+animation = &"closed"
+autoplay = "closed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_a0nj3")
+
+[node name="RewardSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -11)
+texture = ExtResource("3_037fa")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

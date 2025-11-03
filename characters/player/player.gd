@@ -15,8 +15,11 @@ func _physics_process(_delta: float) -> void:
 	compute_velocity()
 	process_collision()
 	animate()
+	update_score_label()
 	move_and_slide()
 
+func update_score_label() -> void:
+	$CanvasLayer/Panel/Label.text = str(SceneManager.opened_chest_count)
 
 func compute_velocity() -> void:
 	var input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -53,9 +56,9 @@ func animate():
 		$AnimatedSprite2D.stop()
 
 func _on_interaction_area_body_entered(body: Node) -> void:
-	if body.is_in_group("interactable") && body is NPC:
+	if body.is_in_group("interactable"):
 		body.enable_interaction()
 
 func _on_interaction_area_body_exited(body: Node) -> void:
-	if body.is_in_group("interactable") && body is NPC:
+	if body.is_in_group("interactable"):
 		body.disable_interaction()
