@@ -12,12 +12,15 @@ func _ready() -> void:
 	$PlayerDetectionArea.body_exited.connect(_on_player_exited)
 
 func _physics_process(_delta: float) -> void:
+	if hp <= 0:
+		return
+
 	try_chase_target()
 	animate_enemy()
 	move_and_slide()
 
 func try_chase_target() -> void:
-	if target:
+	if target and GameManager.player_hp > 0:
 		var direction: Vector2 = (target.global_position - global_position).normalized()
 
 		velocity = velocity.move_toward(direction * chase_speed, acceleration)
@@ -47,4 +50,18 @@ func _on_player_exited(body: Node) -> void:
 		target = null
 
 func die() -> void:
+	$Particles.emitting = true
+
+	$AnimatedSprite2D.visible = false
+	$CollisionShape2D.set_deferred("disabled", true)
+
+	await get_tree().create_timer(1).timeout
+
 	queue_free()
+
+func take_damage() -> void:
+	$DamageSFX.play()
+
+	hp -= 1
+	if hp <= 0:
+		die()

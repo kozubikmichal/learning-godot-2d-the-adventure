@@ -1,11 +1,14 @@
-[gd_scene load_steps=44 format=3 uid="uid://0jasfwgb3au2"]
+[gd_scene load_steps=49 format=3 uid="uid://0jasfwgb3au2"]
 
 [ext_resource type="Script" uid="uid://83quljc2qsxy" path="res://characters/player/player.gd" id="1_xxgcw"]
 [ext_resource type="Texture2D" uid="uid://bk2uhx6u7rpbw" path="res://assets/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SeparateAnim/Attack.png" id="2_c6leb"]
 [ext_resource type="Texture2D" uid="uid://bcv3idq2667b0" path="res://assets/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SeparateAnim/Walk.png" id="2_xxgcw"]
+[ext_resource type="Texture2D" uid="uid://cf0ooxgd1t2ai" path="res://assets/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SpriteSheet.png" id="3_dirf7"]
 [ext_resource type="Texture2D" uid="uid://b52gvn5mjdpbd" path="res://assets/Ninja Adventure - Asset Pack/Items/Scroll/ScrollEmpty.png" id="3_exd8k"]
 [ext_resource type="Texture2D" uid="uid://latyx41ccc84" path="res://assets/Ninja Adventure - Asset Pack/Ui/LifeReceptacle/heart_2.png" id="4_5dc8e"]
 [ext_resource type="Texture2D" uid="uid://n28767fjl43t" path="res://assets/Ninja Adventure - Asset Pack/Items/Weapons/BigSword/Sprite.png" id="5_ixbpm"]
+[ext_resource type="AudioStream" uid="uid://blpvb8yhqpn6q" path="res://assets/Ninja Adventure - Asset Pack/Sounds/Game/Hit3.wav" id="8_idpv6"]
+[ext_resource type="AudioStream" uid="uid://criv2vs6b7h15" path="res://assets/Ninja Adventure - Asset Pack/Sounds/Game/Sword.wav" id="9_rpf03"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lv4bx"]
 atlas = ExtResource("2_c6leb")
@@ -22,6 +25,10 @@ region = Rect2(48, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4cx7u"]
 atlas = ExtResource("2_c6leb")
 region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w53g3"]
+atlas = ExtResource("3_dirf7")
+region = Rect2(0, 96, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_exd8k"]
 atlas = ExtResource("2_xxgcw")
@@ -119,6 +126,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w53g3")
+}],
+"loop": true,
+"name": &"death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -253,6 +268,9 @@ animations = [{
 "name": &"3_hp",
 "speed": 5.0
 }]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rpf03"]
+font_size = 32
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6leb"]
 size = Vector2(6, 18)
@@ -414,7 +432,7 @@ push_force = 200.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fpo3a")
-animation = &"attack_down"
+animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
@@ -476,6 +494,29 @@ sprite_frames = SubResource("SpriteFrames_lv4bx")
 animation = &"3_hp"
 autoplay = "3_hp"
 
+[node name="Panel2" type="Panel" parent="CanvasLayer"]
+offset_left = 6.0
+offset_top = 544.0
+offset_right = 471.0
+offset_bottom = 639.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.5
+offset_top = -46.5
+offset_right = 208.5
+offset_bottom = 46.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "WASD - move
+Spacebar - interact / attack"
+label_settings = SubResource("LabelSettings_rpf03")
+
 [node name="Sword" type="Sprite2D" parent="."]
 position = Vector2(-3, -11)
 texture = ExtResource("5_ixbpm")
@@ -498,3 +539,13 @@ one_shot = true
 libraries = {
 &"": SubResource("AnimationLibrary_dirf7")
 }
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="DamageSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_idpv6")
+
+[node name="SwordSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_rpf03")
