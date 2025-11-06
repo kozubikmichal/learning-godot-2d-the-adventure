@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 @export var move_speed: float = 50.0
 @export var push_force: float = 100.0
+@export var knockback_strength: float = 150.0
+@export var acceleration: float = 10.0
 
 @onready var life_bar: AnimatedSprite2D = $CanvasLayer/LifeBar
 @onready var sword_area: Area2D = $Sword/SwordArea2D
@@ -46,7 +48,7 @@ func compute_velocity() -> void:
 		return
 
 	var input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = input_vector * move_speed
+	velocity = velocity.move_toward(input_vector * move_speed, acceleration)
 
 func process_collision() -> void:
 	var collision: KinematicCollision2D = get_last_slide_collision()
@@ -98,11 +100,14 @@ func _on_interaction_area_body_exited(body: Node) -> void:
 	if body.is_in_group("interactable"):
 		body.disable_interaction()
 
-func _on_hit_box_body_entered(_body: Node) -> void:
+func _on_hit_box_body_entered(body: Node2D) -> void:
 	GameManager.player_hp -= 1
 	update_life_bar()
 	if GameManager.player_hp <= 0:
 		die()
+
+	var distance_to_player = (global_position - body.global_position).normalized()
+	velocity += distance_to_player * knockback_strength
 
 func die() -> void:
 	SceneManager.reload_current_2d_scene()
@@ -111,8 +116,13 @@ func die() -> void:
 func update_life_bar() -> void:
 	life_bar.play(str(GameManager.player_hp) + "_hp")
 
-func _on_sword_area_body_entered(body: Node) -> void:
-	body.queue_free()
+func _on_sword_area_body_entered(body: Node2D) -> void:
+	var knockback_direction = (body.global_position - global_position).normalized()
+	body.velocity += knockback_direction * knockback_strength
+
+	body.hp -= 1
+	if body.hp <= 0:
+		body.die()
 
 func hide_sword() -> void:
 	$Sword.visible = false
