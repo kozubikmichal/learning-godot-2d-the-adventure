@@ -14,7 +14,7 @@ region = Rect2(0, 0, 16, 16)
 size = Vector2(14, 14)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ldo70"]
-font_size = 48
+font_size = 32
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_o6cys"]
@@ -31,6 +31,7 @@ texture = SubResource("AtlasTexture_nhy3c")
 shape = SubResource("RectangleShape2D_3i1kj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="DialogBoxTexture" type="TextureRect" parent="CanvasLayer"]
 offset_left = 23.0

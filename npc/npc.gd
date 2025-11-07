@@ -2,6 +2,7 @@ extends StaticBody2D
 class_name NPC
 
 @export var dialogue_lines: Array[String] = []
+@export var npc_name: String = "NPC"
 
 var dialogue_active_line: int = 0
 
@@ -9,6 +10,7 @@ var can_interact: bool = false
 
 func _ready() -> void:
 	$CanvasLayer.visible = false
+	$CanvasLayer/Label.text = npc_name
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("interact") && can_interact:

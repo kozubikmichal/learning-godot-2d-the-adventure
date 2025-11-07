@@ -47,7 +47,7 @@ func handle_interaction() -> void:
 		attack()
 
 func update_score_label() -> void:
-	$CanvasLayer/Panel/Label.text = str(GameManager.opened_chest_count)
+	$CanvasLayer/Panel/Label.text = str(GameManager.opened_chest_count) + " / 8"
 
 func compute_velocity() -> void:
 	if (is_attaching):

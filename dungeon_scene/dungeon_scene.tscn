@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://ben4y7tinrqbh"]
+[gd_scene load_steps=22 format=4 uid="uid://ben4y7tinrqbh"]
 
 [ext_resource type="PackedScene" uid="uid://0jasfwgb3au2" path="res://characters/player/player.tscn" id="1_i4cnr"]
 [ext_resource type="Script" uid="uid://b7d5edjkasiom" path="res://dungeon_scene/dungeon_scene.gd" id="1_nl4bl"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bnadvbl0pccbi" path="res://switch/switch.tscn" id="12_pjhy6"]
 [ext_resource type="PackedScene" uid="uid://dqjicokf8ywud" path="res://treasure_chest/treasure_chest.tscn" id="14_72vsc"]
 [ext_resource type="AudioStream" uid="uid://gj21foyfeedk" path="res://assets/Ninja Adventure - Asset Pack/Musics/2 - The Cave.ogg" id="15_ueaes"]
+[ext_resource type="Texture2D" uid="uid://cd15ih4evegbt" path="res://assets/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetDungeon.png" id="16_im1ef"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_myxw4"]
 texture = ExtResource("4_nh2fr")
@@ -852,6 +853,38 @@ activation_buttons = [NodePath("../PuzzleButton3")]
 position = Vector2(122, -28)
 activation_buttons = [NodePath("../PuzzleButton4")]
 
+[node name="puzzle_hint" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.427451)
+position = Vector2(287, -57)
+
+[node name="Sprite2D" type="Sprite2D" parent="puzzle_hint"]
+position = Vector2(-51, 4)
+scale = Vector2(0.6875, 0.6875)
+texture = ExtResource("16_im1ef")
+region_enabled = true
+region_rect = Rect2(48, 32, 16, 17)
+
+[node name="Sprite2D2" type="Sprite2D" parent="puzzle_hint"]
+position = Vector2(-31, 19)
+scale = Vector2(0.6875, 0.6875)
+texture = ExtResource("16_im1ef")
+region_enabled = true
+region_rect = Rect2(64, 33, 16, 16)
+
+[node name="Sprite2D3" type="Sprite2D" parent="puzzle_hint"]
+position = Vector2(7.99999, 19)
+scale = Vector2(0.6875, 0.6875)
+texture = ExtResource("16_im1ef")
+region_enabled = true
+region_rect = Rect2(48, 32, 16, 17)
+
+[node name="Sprite2D4" type="Sprite2D" parent="puzzle_hint"]
+position = Vector2(28, 4)
+scale = Vector2(0.6875, 0.6875)
+texture = ExtResource("16_im1ef")
+region_enabled = true
+region_rect = Rect2(64, 33, 16, 16)
+
 [node name="Block" parent="." instance=ExtResource("6_4tbvb")]
 position = Vector2(-232, -106)
 
@@ -888,7 +921,7 @@ position = Vector2(15, -183)
 position = Vector2(-174, -216)
 
 [node name="TreasureChest3" parent="." instance=ExtResource("14_72vsc")]
-position = Vector2(297, -125)
+position = Vector2(295, -125)
 
 [node name="TreasureChest4" parent="." instance=ExtResource("14_72vsc")]
 position = Vector2(0, -50)
