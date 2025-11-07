@@ -858,28 +858,28 @@ modulate = Color(1, 1, 1, 0.427451)
 position = Vector2(287, -57)
 
 [node name="Sprite2D" type="Sprite2D" parent="puzzle_hint"]
-position = Vector2(-51, 4)
+position = Vector2(-31, 19)
 scale = Vector2(0.6875, 0.6875)
 texture = ExtResource("16_im1ef")
 region_enabled = true
 region_rect = Rect2(48, 32, 16, 17)
 
 [node name="Sprite2D2" type="Sprite2D" parent="puzzle_hint"]
-position = Vector2(-31, 19)
+position = Vector2(-52, 7)
 scale = Vector2(0.6875, 0.6875)
 texture = ExtResource("16_im1ef")
 region_enabled = true
 region_rect = Rect2(64, 33, 16, 16)
 
 [node name="Sprite2D3" type="Sprite2D" parent="puzzle_hint"]
-position = Vector2(7.99999, 19)
+position = Vector2(27, 4)
 scale = Vector2(0.6875, 0.6875)
 texture = ExtResource("16_im1ef")
 region_enabled = true
 region_rect = Rect2(48, 32, 16, 17)
 
 [node name="Sprite2D4" type="Sprite2D" parent="puzzle_hint"]
-position = Vector2(28, 4)
+position = Vector2(-5.72205e-06, 20)
 scale = Vector2(0.6875, 0.6875)
 texture = ExtResource("16_im1ef")
 region_enabled = true
